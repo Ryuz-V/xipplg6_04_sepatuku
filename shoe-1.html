@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepatu Olahraga X1 - Toko Sepatu Keren</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #34495e;
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+        }
+        
+        nav ul li a:hover {
+            background-color: #2c3e50;
+            border-radius: 5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .product-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .product-images {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail:hover {
+            border-color: #3498db;
+        }
+        
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-info h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .features ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+        
+        .features li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .size-selector {
+            margin-bottom: 1.5rem;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .size-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        .size-btn:hover {
+            border-color: #3498db;
+        }
+        
+        .size-btn.selected {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .quantity-selector {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-selector input {
+            width: 60px;
+            padding: 0.5rem;
+            text-align: center;
+            margin: 0 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-right: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-outline {
+            background-color: white;
+            color: #3498db;
+            border: 1px solid #3498db;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .review-section {
+            margin-top: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .review {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .review:last-child {
+            border-bottom: none;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-date {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+        
+        .review-content {
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .rating {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Toko Sepatu Keren</h1>
+        <p>Toko Sepatu Online Terpercaya</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="#">Produk</a></li>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <di class="product-detail">
+            <div class="product-images">
+                <img src="Shoe_1.webp" alt="Sepatu Olahraga X1" class="main-image" id="mainImage">
+                <div class="thumbnail-container">
+                    <img src="Shoe_1.webp" alt="Sepatu Olahraga X1 - Tampak Depan" class="thumbnail" onclick="changeImage('Shoe_1.webp')">
+                    <img src="Shoe_1_side.webp" alt="Sepatu Olahraga X1 - Tampak Samping" class="thumbnail" onclick="changeImage('Shoe_1_side.webp')">
+                    <img src="Shoe_1_back.webp" alt="Sepatu Olahraga X1 - Tampak Belakang" class="thumbnail" onclick="changeImage('Shoe_1_back.webp')">
+                    <img src="Shoe_1_top.webp" alt="Sepatu Olahraga X1 - Tampak Atas" class="thumbnail" onclick="changeImage('Shoe_1_top.webp')">
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <h1>Sepatu Olahraga X1</h1>
+                <div class="rating">
+                    ★★★★★ (4.8/5.0)
+                </div>
+                <p class="price">Rp 450.000</p>
+                <p class="description">
+                    Sepatu Olahraga X1 didesain khusus untuk memberikan kenyamanan maksimal dalam setiap langkah Anda. 
+                    Dengan sol yang fleksibel dan bantalan empuk, sepatu ini cocok untuk berbagai aktivitas olahraga 
+                    maupun penggunaan sehari-hari.
+                </p>
+                
+                <div class="features">
+                    <h3>Fitur Produk:</h3>
+                    <ul>
+                        <li>Bahan upper: Mesh breathable untuk sirkulasi udara optimal</li>
+                        <li>Sol: Karet anti-slip dengan bantalan empuk</li>
+                        <li>Berat: Hanya 320 gram per sepatu</li>
+                        <li>Warna tersedia: Hitam, Putih, Biru Navy</li>
+                        <li>Garansi: 6 bulan terhadap cacat produksi</li>
+                    </ul>
+                </div>
+                
+                <div class="size-selector">
+                    <h3>Pilih Ukuran:</h3>
+                    <div class="size-options">
+                        <button class="size-btn" onclick="selectSize(this)">38</button>
+                        <button class="size-btn" onclick="selectSize(this)">39</button>
+                        <button class="size-btn" onclick="selectSize(this)">40</button>
+                        <button class="size-btn selected" onclick="selectSize(this)">41</button>
+                        <button class="size-btn" onclick="selectSize(this)">42</button>
+                        <button class="size-btn" onclick="selectSize(this)">43</button>
+                    </div>
+                </div>
+                
+                <div class="quantity-selector">
+                    <h3>Jumlah:</h3>
+                    <button onclick="decreaseQuantity()">-</button>
+                    <input type="number" id="quantity" value="1" min="1" max="10">
+                    <button onclick="increaseQuantity()">+</button>
+                </div>
+                
+                <button class="btn">Beli Sekarang</button>
+                <button class="btn btn-outline">Tambahkan ke Keranjang</button>
+                
+                <div style="margin-top: 1.5rem;">
+                    <p><strong>Pengiriman:</strong> Gratis ongkir seluruh Indonesia untuk pembelian di atas Rp 500.000</p>
+                    <p><strong>Estimasi:</strong> 2-5 hari kerja</p>
+                </div>
+            </div>
+            <div class="purchase-form" id="purchaseForm" style="display: none; margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 5px;">
+    <h3>Form Pembelian</h3>
+    <form id="orderForm" action="https://formsubmit.co/vyus12345@gmail.com" method="POST">
+        <!-- Input hidden untuk data tambahan -->
+        <input type="hidden" name="_subject" value="Pesanan Baru - Sepatu Olahraga X1">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html"> <!-- Ganti dengan URL terima kasih Anda -->
+        <input type="hidden" name="product" value="Sepatu Olahraga X1">
+        <input type="hidden" name="size" id="hiddenSize" value="">
+        <input type="hidden" name="quantity" id="hiddenQuantity" value="">
+        <input type="hidden" name="total" id="hiddenTotal" value="">
+        
+        <!-- Field yang bisa diisi pengguna -->
+        <div style="margin-bottom: 1rem;">
+            <label for="customerName">Nama Lengkap:</label>
+            <input type="text" id="customerName" name="name" required style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 3px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="customerEmail">Email:</label>
+            <input type="email" id="customerEmail" name="email" required style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 3px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="customerPhone">No. HP:</label>
+            <input type="tel" id="customerPhone" name="phone" required style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 3px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="customerAddress">Alamat:</label>
+            <textarea id="customerAddress" name="address" required style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 3px; height: 80px;"></textarea>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Konfirmasi Pembelian</button>
+    </form>
+</div>
+        
+        <div class="review-section">
+            <h2>Ulasan Pelanggan</h2>
+            
+            <div class="review">
+                <div class="review-author">Andi Pratama</div>
+                <div class="rating">★★★★★</div>
+                <div class="review-date">12 Juni 2023</div>
+                <div class="review-content">
+                    Sepatu sangat nyaman dipakai, solnya empuk dan tidak licin. 
+                    Ukuran pas sesuai dengan yang saya pesan. Pengiriman cepat, hanya 2 hari sudah sampai.
+                </div>
+            </div>
+            
+            <div class="review">
+                <div class="review-author">Budi Santoso</div>
+                <div class="rating">★★★★☆</div>
+                <div class="review-date">28 Mei 2023</div>
+                <div class="review-content">
+                    Kualitas bagus untuk harga segini. Hanya saja warna sedikit berbeda dengan foto, 
+                    mungkin karena pencahayaan saat difoto. Tapi secara keseluruhan puas dengan pembelian ini.
+                </div>
+            </div>
+            
+            <div class="review">
+                <div class="review-author">Citra Dewi</div>
+                <div class="rating">★★★★★</div>
+                <div class="review-date">15 April 2023</div>
+                <div class="review-content">
+                    Sudah beli yang kedua kalinya karena suka dengan kenyamanannya. 
+                    Sangat cocok untuk dipakai lari pagi maupun jalan-jalan santai. 
+                    Recomended banget!
+                </div>
+            </div>
+            
+            <button class="btn btn-outline" style="margin-top: 1rem;">Tulis Ulasan</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Toko Sepatu Keren. All Rights Reserved.</p>
+    </footer>
+    
+<script>
+    // Fungsi untuk memilih ukuran
+    function selectSize(btn) {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+    }
+
+    // Fungsi untuk mengubah kuantitas
+    function increaseQuantity() {
+        const quantityInput = document.getElementById('quantity');
+        if(parseInt(quantityInput.value) < 10) {
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+    }
+
+    function decreaseQuantity() {
+        const quantityInput = document.getElementById('quantity');
+        if(parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    }
+
+    // Fungsi untuk menampilkan form pembelian
+    document.querySelector('.product-info .btn').addEventListener('click', function() {
+        document.getElementById('purchaseForm').style.display = 'block';
+        document.getElementById('purchaseForm').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    });
+
+    // Fungsi untuk mengisi data sebelum form dikirim
+    document.getElementById('orderForm').addEventListener('submit', function() {
+        // Isi field hidden sebelum form dikirim
+        document.getElementById('hiddenSize').value = document.querySelector('.size-btn.selected').textContent;
+        document.getElementById('hiddenQuantity').value = document.getElementById('quantity').value;
+        document.getElementById('hiddenTotal').value = 450000 * document.getElementById('quantity').value;
+    });
+
+    // Fungsi untuk mengganti gambar utama
+    function changeImage(src) {
+        document.getElementById('mainImage').src = src;
+    }
+</script>
+</body>
+</html>
