@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Basic styles for the form - adjust as needed */
+        .purchase-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .order-summary {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        .summary-item, .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .summary-total {
+            font-weight: bold;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .form-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #e0e0e0;
+        }
+        #loadingIndicator {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="purchase-form-container">
+        <h2>Form Pembelian</h2>
+        <form id="purchaseForm" class="purchase-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Nomor Telepon</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Alamat Lengkap</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+            
+            <div class="order-summary">
+                <h3>Ringkasan Pesanan</h3>
+                <div class="summary-item">
+                    <span>Sepatu Olahraga X1 Pro</span>
+                    <span>Rp 450.000</span>
+                </div>
+                <div class="summary-item">
+                    <span>Ongkos Kirim</span>
+                    <span id="shippingCost">Rp 0</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total Pembayaran</span>
+                    <span id="totalCost">Rp 450.000</span>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Proses Pembayaran</button>
+                <button type="button" class="btn btn-secondary" id="cancelBtn">Batalkan</button>
+            </div>
+        </form>
+    </div>
+
+<script>
+    document.getElementById("purchaseForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // mencegah submit default
+
+    // Ambil nilai dari form
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
+    
+    const product = "Sepatu Olahraga X1 Pro";
+    const price = "Rp 450.000";
+
+    // Nomor WA tujuan (format internasional tanpa + atau 0 di depan)
+    const waNumber = "6281260790893"; // ganti dengan nomor kamu
+
+    // Buat pesan yang diformat untuk WA
+    const message = 
+`Halo, saya ingin memesan:
+Nama: ${name}
+Email: ${email}
+No HP: ${phone}
+Alamat: ${address}
+
+Pesanan: ${product}
+Total: ${price}`;
+
+    // Encode dan arahkan ke WhatsApp
+    const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+    window.location.href = waLink;
+});
+</script>
+
+
+
+
+    <!-- Loading indicator -->
+    <div id="loadingIndicator">
+        <div>Processing your payment...</div>
+    </div>
+
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init({
+            publicKey: "Nl2QTdQ8EbpPLCR39",
+          });
+       })();
+    </script>
+    <script src="/script.js"></script>
+</body>
+</html>
